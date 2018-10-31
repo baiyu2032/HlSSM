@@ -31,4 +31,12 @@
 	<select id="getbrand" resultMap="goodsandbrand">
 		select * from brand b ,goods g WHERE b.bid=g.gid
 	</select>
+	<select id="findByName" resultType="cn.pojo.Goods" parameterType="cn.pojo.Goods">
+		select * from goods
+		<trim prefix="where" prefixOverrides="and|or">
+		<if test="gname != null">
+			gname like  CONCAT('%',#{gname},'%')
+		</if>
+		</trim>
+	</select>
 </mapper>
