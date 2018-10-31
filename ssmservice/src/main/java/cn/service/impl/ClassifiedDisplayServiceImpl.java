@@ -31,7 +31,7 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
      */
     @Override
     public String getbrand() {
-        List<Brand> brands=goodsDao.getbrand();
+        List<Goods> brands=goodsDao.getbrand();
         String s = JSON.toJSONString(brands);
         return s;
     }
