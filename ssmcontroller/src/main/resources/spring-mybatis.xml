@@ -43,12 +43,12 @@
    	<!-- 配置mybitas SqlSessionFactoryBean-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<property name="dataSource" ref="dataSource"/>
-    	<property name="mapperLocations" value="classpath:BrandMapper.xml"></property>
+    	<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
     	<property name="typeAliasesPackage" value="cn.pojo"></property>
     </bean>
     
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
-         <property name="basePackage" value="cn.dao" />
+         <property name="basePackage" value="cn.dao"/>
     </bean>
 
 
