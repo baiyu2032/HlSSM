@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * 分类展示种类信息
+ */
 @Repository("cdsi")
 public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
     @Autowired
