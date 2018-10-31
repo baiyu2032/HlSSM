@@ -25,6 +25,7 @@
         <log4j.version>1.2.17</log4j.version>
         <!--jackson版本号-->
         <jackson.version>2.7.1</jackson.version>
+        <commons.version>2.4.2</commons.version>
     </properties>
 
     <dependencies>
@@ -33,6 +34,11 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons.version}</version>
         </dependency>
         <!-- spring核心包 -->
         <dependency>

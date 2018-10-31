@@ -11,7 +11,7 @@
   <!-- Spring和Mybatis的配置文件 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-mybatis.xml</param-value>
+    <param-value>classpath:spring-mybatis.xml,classpath:redis-config.xml</param-value>
   </context-param>
 
   <!-- 加载log4j -->
