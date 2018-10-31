@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.dao.GoodsDao">
+	<resultMap id="goodsandbrand" type="Goods">
+		<result column="gid" property="gid"/>
+		<result column="gname" property="gname"/>
+		<result column="gimg" property="gimg"/>
+		<result column="gsum" property="gsum"/>
+		<result column="gmoney" property="gmoney"/>
+		<result column="glogo" property="glogo"/>
+		<result column="ginfo" property="ginfo"/>
+		<result column="gnum" property="gnum"/>
+		<result column="one" property="one"/>
+		<result column="two" property="two"/>
+		<result column="three" property="three"/>
+		<association property="gbra" javaType="Brand">
+			<result column="bid" property="bid"/>
+			<result column="bname" property="bname"/>
+		</association>
+	</resultMap>
+	<select id="getbrand" resultMap="goodsandbrand">
+		select bname from goods gd,brand bd where gd.gbra=bd.bid
+	</select>
+</mapper>
