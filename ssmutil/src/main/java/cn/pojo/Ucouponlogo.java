@@ -1,8 +1,13 @@
 package cn.pojo;
 
 public class Ucouponlogo {
-
+  /**
+   * 编号
+   */
   private long ucid;
+  /**
+   * 用户所有劵标识 0.未使用 1.被占用 2.已使用
+   */
   private String ucname;
 
 

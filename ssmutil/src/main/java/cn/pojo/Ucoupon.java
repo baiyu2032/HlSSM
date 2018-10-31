@@ -1,42 +1,55 @@
 package cn.pojo;
 
 public class Ucoupon {
-
-  private long ucid;
-  private long ucname;
-  private java.sql.Timestamp uctime;
+  /**
+   * 编号
+   */
+  private Integer ucid;
+  /**
+   * 优惠券编号
+   */
+  private Integer cid;
+  /**
+   * 用户编号
+   */
+  private Integer ucname;
+  /**
+   * 生效时间
+   */
   private java.sql.Timestamp start;
+  /**
+   * 过期时间
+   */
   private java.sql.Timestamp end;
-  private long uclogo;
+  /**
+   * 优惠券标识 0.未领取 1.已领取
+   */
+  private Integer colo;
+  /**
+   * 用户所有劵标识 0.未使用 1.被占用 2.已使用
+   */
+  private Integer uclogo;
   private String one;
   private String two;
   private String three;
+  private Coupon coupon;
 
 
-  public long getUcid() {
+  public Integer getUcid() {
     return ucid;
   }
 
-  public void setUcid(long ucid) {
+  public void setUcid(Integer ucid) {
     this.ucid = ucid;
   }
 
 
-  public long getUcname() {
+  public Integer getUcname() {
     return ucname;
   }
 
-  public void setUcname(long ucname) {
+  public void setUcname(Integer ucname) {
     this.ucname = ucname;
-  }
-
-
-  public java.sql.Timestamp getUctime() {
-    return uctime;
-  }
-
-  public void setUctime(java.sql.Timestamp uctime) {
-    this.uctime = uctime;
   }
 
 
@@ -58,11 +71,20 @@ public class Ucoupon {
   }
 
 
-  public long getUclogo() {
+  public Integer getColo() {
+    return colo;
+  }
+
+  public void setColo(Integer colo) {
+    this.colo = colo;
+  }
+
+
+  public Integer getUclogo() {
     return uclogo;
   }
 
-  public void setUclogo(long uclogo) {
+  public void setUclogo(Integer uclogo) {
     this.uclogo = uclogo;
   }
 
@@ -93,4 +115,12 @@ public class Ucoupon {
     this.three = three;
   }
 
+
+  public Coupon getCoupon() {
+    return coupon;
+  }
+
+  public void setCoupon(Coupon coupon) {
+    this.coupon = coupon;
+  }
 }

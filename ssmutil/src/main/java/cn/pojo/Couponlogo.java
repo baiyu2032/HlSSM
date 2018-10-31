@@ -1,16 +1,21 @@
 package cn.pojo;
 
 public class Couponlogo {
-
-  private long clid;
+  /**
+   * 编号
+   */
+  private Integer clid;
+  /**
+   * 优惠券状态 0.未领取 1.已领取
+   */
   private String clname;
 
 
-  public long getClid() {
+  public Integer getClid() {
     return clid;
   }
 
-  public void setClid(long clid) {
+  public void setClid(Integer clid) {
     this.clid = clid;
   }
 
