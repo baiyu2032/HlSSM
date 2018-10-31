@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@RequestMapping("display")
+@RequestMapping("display/")
 @Controller
 public class ClassifiedDisPlayContraller {
     @Autowired
@@ -19,5 +19,11 @@ public class ClassifiedDisPlayContraller {
     @RequestMapping(value = "getbrand")
     public String brand(){
         return cds.getbrand();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "showcom")
+    public String showcom(int id){
+        return cds.computerShow(id);
     }
 }
