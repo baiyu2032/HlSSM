@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ssmcontraller:war">
+    <output-path>$PROJECT_DIR$/ssmcontroller/target</output-path>
+    <root id="archive" name="ssmcontraller.war">
+      <element id="artifact" artifact-name="ssmcontraller:war exploded" />
+    </root>
+  </artifact>
+</component>

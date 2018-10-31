@@ -1,7 +1,6 @@
 package cn.service.impl;
 
 import cn.dao.UserJobDao;
-import cn.pojo.UserJob;
 import cn.service.GetAllService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;

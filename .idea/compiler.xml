@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ssmcontraller" />
+        <module name="ssmdao" />
+        <module name="ssmservice" />
+        <module name="ssmutil" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="HlSSM" target="1.5" />
+      <module name="ssmcontraller" target="1.7" />
+      <module name="ssmdao" target="1.5" />
+      <module name="ssmservice" target="6" />
+      <module name="ssmutil" target="6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
