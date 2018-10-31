@@ -15,6 +15,7 @@ public class ClassifiedDisPlayContraller {
     public void setCds(ClassifiedDisplayService cds) {
         this.cds = cds;
     }
+
     @ResponseBody
     @RequestMapping(value = "getbrand")
     public String brand(){

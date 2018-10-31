@@ -16,6 +16,7 @@ import java.util.List;
  */
 @Repository("cdsi")
 public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
+
     @Autowired
     @Qualifier("gd")
     private GoodsDao goodsDao;
