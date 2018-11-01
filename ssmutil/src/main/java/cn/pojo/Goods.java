@@ -1,15 +1,41 @@
 package cn.pojo;
 
 public class Goods {
-
+    /**
+     * 商品编号
+     */
   private long gid;
+    /**
+     * 商品名称
+     */
   private String gname;
+    /**
+     * 商品图片
+     */
   private String gimg;
+    /**
+     *商品售出数量
+     */
   private long gsum;
+    /**
+     * 商品价格
+     */
   private long gmoney;
+    /**
+     * 商品品牌
+     */
   private long gbra;
+    /**
+     * 商品信息
+     */
   private String ginfo;
+    /**
+     * 商品库存
+     */
   private long gnum;
+    /**
+     * 商品标识 0.下架 1.上架
+     */
   private long glogo;
   private String one;
   private String two;

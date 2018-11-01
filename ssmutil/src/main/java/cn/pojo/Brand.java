@@ -5,8 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Brand {
-
+    /**
+     * 品牌编号
+     */
   private long bid;
+    /**
+     * 品牌名称
+     */
   private String bname;
   private String one;
   private String two;

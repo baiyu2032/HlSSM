@@ -1,14 +1,37 @@
 package cn.pojo;
 
 public class Order {
-
+  /**
+   * 订单ID
+   */
   private long oid;
+  /**
+   * 订单编号
+   */
   private long onum;
+  /**
+   * 订单商品
+   */
   private long ogoods;
+  /**
+   * 订单用户
+   */
   private long ouser;
+  /**
+   * 订单地址
+   */
   private String olocal;
+  /**
+   * 订单发货时间
+   */
   private java.sql.Timestamp ostart;
+  /**
+   * 订单到货时间
+   */
   private java.sql.Timestamp oend;
+  /**
+   * 订单标识
+   */
   private long ologo;
   private String one;
   private String two;

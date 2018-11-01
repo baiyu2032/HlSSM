@@ -1,14 +1,37 @@
 package cn.pojo;
 
 public class User {
-
+  /**
+   * 用户编号
+   */
   private long uid;
+  /**
+   * 微信唯一标识
+   */
   private String uopenid;
+  /**
+   * 用户地址
+   */
   private String ulocal;
+  /**
+   * 退货售后
+   */
   private String uafter;
+  /**
+   * 用户标识
+   */
   private String ulogo;
+  /**
+   * 冗余1
+   */
   private String one;
+  /**
+   * 冗余2
+   */
   private String two;
+  /**
+   * 冗余3
+   */
   private String three;
 
 
@@ -55,8 +78,7 @@ public class User {
   public void setUlogo(String ulogo) {
     this.ulogo = ulogo;
   }
-
-
+  
   public String getOne() {
     return one;
   }

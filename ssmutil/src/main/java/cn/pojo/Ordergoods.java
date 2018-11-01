@@ -1,15 +1,41 @@
 package cn.pojo;
 
 public class Ordergoods {
-
+  /**
+   * 订单商品编号
+   */
   private long ogid;
+  /**
+   * 订单商品数量
+   */
   private long ognum;
+  /**
+   * 订单商品图片
+   */
   private String ogimg;
+  /**
+   * 订单商品品牌
+   */
   private long ogbrand;
+  /**
+   * 订单商品名称
+   */
   private String ogname;
+  /**
+   * 订单商品信息
+   */
   private String oginfo;
+  /**
+   * 订单商品价格
+   */
   private long ogmoney;
+  /**
+   * 订单用户ID
+   */
   private long uid;
+  /**
+   * 微信用户唯一标识
+   */
   private long uopenid;
   private long onum;
   private String one;
