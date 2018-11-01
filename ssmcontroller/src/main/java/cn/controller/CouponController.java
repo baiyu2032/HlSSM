@@ -21,5 +21,4 @@ public class CouponController {
     public String showAll(){
         return cs.selAll();
     }
-
 }

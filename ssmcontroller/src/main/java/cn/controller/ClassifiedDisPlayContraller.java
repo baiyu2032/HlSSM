@@ -1,5 +1,6 @@
 package cn.controller;
 
+import cn.config.SensitiveWordFilterConfig;
 import cn.service.ClassifiedDisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,8 @@ public class ClassifiedDisPlayContraller {
     @ResponseBody
     @RequestMapping(value = "findbyname" ,produces = "application/json;charset=utf-8")
     public String findByComname(String s){
-        return cds.findByComname(s);
+        SensitiveWordFilterConfig swfc=new SensitiveWordFilterConfig();
+        String s1 = swfc.filterInfo(s);
+        return cds.findByComname(s1);
     }
 }
