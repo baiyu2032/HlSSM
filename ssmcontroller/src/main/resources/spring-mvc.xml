@@ -1,32 +1,63 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
 	   xmlns:p="http://www.springframework.org/schema/p"
 	   xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="
-            http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context.xsd">
-	<!--扫描redis配置文件-->
-	<context:property-placeholder location="classpath:redis.properties"/>
-	<!--设置连接池-->
-	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
-		<property name="maxIdle" value="${redis.maxIdle}"/>
-		<property name="maxTotal" value="${redis.maxTotal}" />
-		<property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
-		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
-		<property name="testOnReturn" value="${redis.testOnReturn}" />
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	<!-- 启用SpringMVC注解 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 将 springSwaggerConfig加载到spring容器 -->
+	<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
+	<!-- 将自定义的swagger配置类加载到spring容器 -->
+	<bean class="cn.config.SwaggerConfig" />
+
+	<!-- 对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
+	<context:component-scan base-package="cn.controller"/>
+	<!--<mvc:resources mapping="/statics/**" location="/statics/" />-->
+	<!-- 静态资源文件，不会被Spring MVC拦截 -->
+
+	<mvc:resources mapping="/swagger/**" location="/swagger/" />
+	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp"></property>
 	</bean>
-	<!--设置链接属性-->
-	<bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-		  p:hostName="${redis.host}"
-		  p:port="${redis.port}"
-		  p:password="${redis.password}"
-		  p:pool-config-ref="poolConfig"
-		  p:timeout="100000"/>
-	<!-- Jedis模板配置  -->
-	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
-		<property name="connectionFactory"   ref="connectionFactory" />
+
+	<!--全局异常 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.RuntimeException">/WEB-INF/error</prop>
+			</props>
+		</property>
 	</bean>
+
+
 </beans>
