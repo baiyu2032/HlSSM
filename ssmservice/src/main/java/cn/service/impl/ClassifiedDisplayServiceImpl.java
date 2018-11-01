@@ -47,4 +47,11 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
         String s = JSON.toJSONString(corres);
         return s;
     }
+
+    @Override
+    public String findByComname(String string) {
+        List<Goods> byName = goodsDao.findByName(string);
+        String s = JSON.toJSONString(byName);
+        return s;
+    }
 }

@@ -21,10 +21,15 @@ public class ClassifiedDisPlayContraller {
     public String brand(){
         return cds.getbrand();
     }
-
     @ResponseBody
     @RequestMapping(value = "showcom")
     public String showcom(int id){
         return cds.computerShow(id);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "findbyname" ,produces = "application/json;charset=utf-8")
+    public String findByComname(String s){
+        return cds.findByComname(s);
     }
 }

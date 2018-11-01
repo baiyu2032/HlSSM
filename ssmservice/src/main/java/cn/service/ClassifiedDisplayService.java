@@ -17,4 +17,6 @@ public interface ClassifiedDisplayService {
      * @return
      */
     String computerShow(int gbra);
+
+    String findByComname(String string);
 }

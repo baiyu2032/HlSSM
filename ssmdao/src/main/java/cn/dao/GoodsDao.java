@@ -21,6 +21,13 @@ public interface GoodsDao {
      * @return
      */
     List<Goods> corres(@Param("gbra") int gbra);
+
+    /**
+     * 对于商品名称进行模糊查询
+     * @param gname 商品名称关键字
+     * @return
+     */
+    List<Goods> findByName(@Param("gname") String gname);
 }
 
 
