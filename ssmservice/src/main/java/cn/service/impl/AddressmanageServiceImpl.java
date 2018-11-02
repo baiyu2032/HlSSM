@@ -148,16 +148,16 @@ public class AddressmanageServiceImpl implements AddressmanageService {
     }
 
     @Override
-        public String selLocal(int uid) {
+        public Map<String,String> selLocal(int uid) {
         List<Address> list = null;
         Map<String,String> map = new HashMap<String, String>();
         list=addressDao.selectlocal(uid);
-        if (list != null){
+        if (list != null&&!list.isEmpty()){
             map.put("errmsg","查找成功");
             map.put("data",JSON.toJSONString(list));
         }else{
             map.put("errmsg","查找失败当前没有数据");
         }
-        return JSON.toJSONString(map);
+        return map;
     }
 }

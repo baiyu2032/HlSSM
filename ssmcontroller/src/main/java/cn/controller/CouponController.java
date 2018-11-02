@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("cou/")
@@ -51,8 +52,8 @@ public class CouponController {
      */
     @ResponseBody
     @RequestMapping(value = "updUcoupon" )
-    @ApiOperation(value="用户使用优惠券",httpMethod="POST",notes="返回使用情况")
-    public String showUpd(int cid, int uid) {
+    @ApiOperation(value="用户使用优惠券",httpMethod="GET",notes="返回使用情况")
+    public String showUpd(@RequestParam("cid")int cid,@RequestParam("uid") int uid) {
         return cs.updUcoupon(cid,uid);
     }
 
@@ -64,7 +65,7 @@ public class CouponController {
     @ResponseBody
     @RequestMapping(value = "selAllUcoupon" )
     @ApiOperation(value="显示用户所有优惠券信息",httpMethod="POST",notes="返回优惠券情况")
-    public String selUserCoupon(Ucoupon uc) {
+    public String selUserCoupon(@RequestBody Ucoupon uc) {
         return cs.addUserUcoupon(uc);
     }
 

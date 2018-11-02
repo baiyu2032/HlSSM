@@ -65,5 +65,5 @@ public interface AddressmanageService {
      * @Author:13654
      * @Date: 2018/11/2 16:18
      */
-    String selLocal(int uid);
+    Map<String,String> selLocal(int uid);
 }
