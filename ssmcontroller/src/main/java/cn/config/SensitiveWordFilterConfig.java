@@ -9,11 +9,15 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * 敏感词过滤工具类，基于DFA算法java实现
+ */
 public class SensitiveWordFilterConfig {
-    private StringBuilder replaceAll;//初始化
+    //初始化
+    private StringBuilder replaceAll;
     private String encoding = "UTF-8";
     private String replceStr = "*";
-    private int replceSize = 500;
+    private  int replceSize = 500;
     private String fileName = "CensorWords.txt";
     private List<String> arrayList;
 
@@ -50,8 +54,10 @@ public class SensitiveWordFilterConfig {
             temp = arrayList.get(x);
             int findIndexSize = 0;
             for (int start = -1; (start = buffer.indexOf(temp, findIndexSize)) > -1; ) {
-                findIndexSize = start + temp.length();//从已找到的后面开始找
-                Integer mapStart = hash.get(start);//起始位置
+                //从已找到的后面开始找
+                findIndexSize = start + temp.length();
+                //起始位置
+                Integer mapStart = hash.get(start);
                 if (mapStart == null || (mapStart != null && findIndexSize > mapStart))//满足1个，即可更新map
                 {
                     hash.put(start, findIndexSize);
@@ -93,7 +99,7 @@ public class SensitiveWordFilterConfig {
             e.printStackTrace();
         } finally {
             try {
-                if (null != bufferedReader) {
+                if (bufferedReader != null) {
                     bufferedReader.close();
                 }
             } catch (IOException e) {
