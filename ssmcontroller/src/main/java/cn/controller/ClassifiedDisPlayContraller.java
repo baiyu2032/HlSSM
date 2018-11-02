@@ -37,8 +37,8 @@ public class ClassifiedDisPlayContraller {
     @RequestMapping(value = "findbyname" ,produces = "application/json;charset=utf-8")
     @ApiOperation(value="模糊查询",httpMethod="POST",notes="返回查到的商品信息json数组")
     public String findByComname(String s){
-        SensitiveWordFilterConfig swfc=new SensitiveWordFilterConfig();
-        String s1 = swfc.filterInfo(s);
-        return cds.findByComname(s1);
+//        SensitiveWordFilterConfig swfc=new SensitiveWordFilterConfig();
+//        String s1 = swfc.filterInfo(s);
+        return cds.findByComname(s);
     }
 }
