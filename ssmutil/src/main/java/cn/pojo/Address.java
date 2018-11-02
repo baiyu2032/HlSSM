@@ -35,7 +35,7 @@ public class Address {
     /**
      *邮政编码
      */
-    private Integer postcode;
+    private String postcode;
     /**
      *地址
      */
@@ -45,6 +45,31 @@ public class Address {
      */
     private Integer uid;
 
+    /**
+     *标记（1可见 0不可见）
+     */
+    private Integer logo;
+
+    /**
+     *默认地址标记(1默认地址 0不是默认地址)
+     */
+    private Integer adefault;
+
+    public Integer getLogo() {
+        return this.logo;
+    }
+
+    public void setLogo(Integer logo) {
+        this.logo = logo;
+    }
+
+    public Integer getAdefault() {
+        return this.adefault;
+    }
+
+    public void setAdefault(Integer adefault) {
+        this.adefault = adefault;
+    }
 
     public Integer getAid() {
         return this.aid;
@@ -71,11 +96,11 @@ public class Address {
         this.phone = phone;
     }
 
-    public Integer getPostcode() {
+    public String getPostcode() {
         return this.postcode;
     }
 
-    public void setPostcode(Integer postcode) {
+    public void setPostcode(String postcode) {
         this.postcode = postcode;
     }
 
