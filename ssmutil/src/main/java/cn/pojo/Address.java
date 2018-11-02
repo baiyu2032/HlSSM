@@ -45,23 +45,12 @@ public class Address {
      */
     private Integer uid;
 
-    /**
-     *标记（1可见 0不可见）
-     */
-    private Integer logo;
 
     /**
      *默认地址标记(1默认地址 0不是默认地址)
      */
     private Integer adefault;
 
-    public Integer getLogo() {
-        return this.logo;
-    }
-
-    public void setLogo(Integer logo) {
-        this.logo = logo;
-    }
 
     public Integer getAdefault() {
         return this.adefault;

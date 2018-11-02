@@ -4,6 +4,8 @@ import cn.pojo.Address;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 功能描述: <br>
  * 〈地址〉
@@ -24,7 +26,7 @@ public interface AddressDao {
      * @Author:13654
      * @Date: 2018/11/1 14:08
      */
-    int addlocal(Address address);
+    int addLocal(Address address);
 
 
     /**
@@ -37,7 +39,7 @@ public interface AddressDao {
      * @Author:13654
      * @Date: 2018/11/1 14:10
      */
-    int updatelocal(Address address);
+    int updateLocal(Address address);
 
     /**
      * 功能描述: <br>
@@ -49,7 +51,7 @@ public interface AddressDao {
      * @Author:13654
      * @Date: 2018/11/1 14:25
      */
-    int dellocal(@Param("uid") int uid);
+    int delLocal(@Param("uid") int uid,@Param("aid") int aid);
 
     /**
      * 功能描述: <br>
@@ -61,6 +63,18 @@ public interface AddressDao {
      * @Author:13654
      * @Date: 2018/11/1 14:25
      */
-    int localcount(@Param("uid") int uid);
+    int localCount(@Param("uid") int uid);
+
+    /**
+     * 功能描述: <br>
+     * 〈查询用户的地址信息〉
+     *
+     * @param uid
+     * @return:
+     * @since: 1.0.0
+     * @Author:13654
+     * @Date: 2018/11/2 16:11
+     */
+    List<Address> selectlocal(@Param("uid")int uid);
 
 }

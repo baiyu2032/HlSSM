@@ -62,7 +62,7 @@ public class CouponController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "updUcoupon" )
+    @RequestMapping(value = "selAllUcoupon" )
     @ApiOperation(value="显示用户所有优惠券信息",httpMethod="POST",notes="返回优惠券情况")
     public String selUserCoupon(Ucoupon uc) {
         return cs.addUserUcoupon(uc);

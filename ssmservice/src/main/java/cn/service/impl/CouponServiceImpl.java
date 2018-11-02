@@ -103,11 +103,11 @@ public class CouponServiceImpl implements CouponService {
         String str = "";
         int count = couponDao.selCoupon(uc);
         if (count == 0) {
-            str = "未领取";
+            str = "未领取！";
         }else if (count == 1) {
-            str = "已领取";
+            str = "已领取！";
         }else {
-            str = "已使用";
+            str = "已使用！";
         }
         str = JSON.toJSONString(str);
         return str;
