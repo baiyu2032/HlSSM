@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.dao.OrderDao">
+    <insert id="addOrder" parameterType="cn.pojo.Order">
+        insert into order values(0,#{onum},#{ogoods},#{olocal},#{ologo},#{oremark},0,0)
+    </insert>
+    <select id="selOrder" resultType="cn.pojo.Order">
+        select ogid,onum,ogoods,olocal,ologo,oremark from order
+    </select>
+</mapper>
