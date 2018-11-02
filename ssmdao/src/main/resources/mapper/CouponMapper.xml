@@ -2,19 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dao.CouponDao">
-<!--    <resultMap id="selCouponInfo" type="Coupon">
-        <result column="cid" property="cid"/>
-        <result column="cname" property="cname"/>
-        <result column="num" property="num"/>
-        <result column="sum" property="sum"/>
-        <result column="maxget" property="maxget"/>
-        <result column="start" property="start"/>
-        <result column="end" property="end"/>
-        <result column="cinfo" property="cinfo"/>
-        <result column="one" property="one"/>
-        <result column="two" prop erty="two"/>
-        <result column="three" property="three"/>
-    </resultMap>-->
+
     <select id="selCouponInfo" resultType="cn.pojo.Coupon">
         select cname from coupon where num=0
     </select>
@@ -23,39 +11,17 @@
         insert into ucoupon values (0,#{cid},#{uid},0,0,1,1,0,0,0)
     </insert>
 
-    <update id="delUcoupon" parameterType="Ucoupon">
+    <update id="delUcoupon" parameterType="cn.pojo.Ucoupon">
         update ucoupon set uclogo=2 where cid=#{cid} and uid=#{uid}
     </update>
 
+    <select id="selUserCoupon" parameterType="cn.pojo.Ucoupon" resultType="int">
+        select cid from ucoupon where uid=#{uid}
+    </select>
 
-
-    <resultMap id="couponAndUcoupon" type="Coupon">
-        <result column="cid" property="cid"/>
-        <result column="cname" property="cname"/>
-        <result column="num" property="num"/>
-        <result column="sum" property="sum"/>
-        <result column="maxget" property="maxget"/>
-        <result column="start" property="start"/>
-        <result column="end" property="end"/>
-        <result column="cinfo" property="cinfo"/>
-        <result column="one" property="one"/>
-        <result column="two" property="two"/>
-        <result column="three" property="three"/>
-        <association property="ucoupon" javaType="Ucoupon">
-            <result column="uid" property="uid"/>
-            <result column="cid" property="cid"/>
-            <result column="uname" property="uname"/>
-            <result column="start" property="start"/>
-            <result column="end" property="end"/>
-            <result column="colo" property="colo"/>
-            <result column="uclogo" property="uclogo"/>
-            <result column="one" property="one"/>
-            <result column="two" property="two"/>
-            <result column="three" property="three"/>
-        </association>
-    </resultMap>
-    <select id="selUserCoupon" resultType="Coupon">
-        SELECT coupon.cname,coupon.num FROM ucoupon, coupon WHERE ucoupon.cid = coupon.cid
+    <!-- 显示优惠券状态 -->
+    <select id="selCoupon" parameterType="cn.pojo.Ucoupon" resultType="int">
+        select uclogo from ucoupon where uid=#{uid}
     </select>
 
 
