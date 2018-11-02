@@ -2,7 +2,6 @@ package cn.dao;
 
 import cn.pojo.Coupon;
 import cn.pojo.Ucoupon;
-import cn.pojo.Ucouponlogo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
