@@ -3,17 +3,39 @@ package cn.dao;
 import cn.pojo.Coupon;
 import cn.pojo.Ucoupon;
 import cn.pojo.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository("cd")
 public interface CouponDao {
     /**
-     * 显示所有优惠券
+     * 展示优惠券信息
      * @return
      */
-    List<Coupon> selAll();
+    List<Coupon> selCouponInfo();
+
+    /**
+     * 用户添加优惠券
+     * @return
+     */
+    int addUserUcoupon(Ucoupon uc);
+
+    /**
+     * 用户使用优惠券
+     * @param uid 用户编号
+     * @return
+     */
+    int updUcoupon(@Param("cid")int cid, @Param("uid")int uid);
+
+    /**
+     * 显示用户所有优惠券信息
+     * @param uid 用户ID
+     * @return
+     */
+    List<Ucoupon> selUserCoupon(@Param("uid")int uid);
+
+
 
     /**
      * 查询用户信息
@@ -28,12 +50,6 @@ public interface CouponDao {
      * @return
      */
     Ucoupon selUclogo(int uid);
-
-    /**
-     * 用户使用券更新状态
-     * @return
-     */
-    int updateUclogo(int uid);
 
     /**
      * 用户领取优惠券

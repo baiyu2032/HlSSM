@@ -1,5 +1,6 @@
 package cn.controller;
 
+import cn.pojo.Ucoupon;
 import cn.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,14 @@ public class CouponController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "selAll")
-    public String showAll(){
-        return cs.selAll();
+    @RequestMapping(value = "selCouponInfo")
+    public String showGet() {
+        return cs.selCouponInfo();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "addUserUcoupon" )
+    public String showAdd(Ucoupon uc) {
+        return cs.addUserUcoupon(uc);
+    }
 }
