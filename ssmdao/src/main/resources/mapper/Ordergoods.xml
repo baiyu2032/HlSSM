@@ -4,4 +4,7 @@
     <insert id="addOrdergoods" parameterType="cn.pojo.Ordergoods">
         insert into ordergoods value(0,#{ognum},#{oginfo},#{ogmoney},#{uid},#{uopenid},#{onum},null,null,null,#{ogimg},#{ogbrand},#{ogname})
     </insert>
+    <select id="selOrdergoods" resultType="cn.pojo.Ordergoods" parameterType="int">
+        select * from ordergoods where ogid=#{ogid}
+    </select>
 </mapper>

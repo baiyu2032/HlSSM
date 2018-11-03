@@ -12,4 +12,10 @@ public interface OrdergoodsDao {
      */
  int addOrdergoods(Ordergoods odg);
 
+    /**
+     * 根据对应id查询对应订单商品
+     * @param id id
+     * @return 订单商品信息
+     */
+    Ordergoods selOrdergoods(long id);
 }
