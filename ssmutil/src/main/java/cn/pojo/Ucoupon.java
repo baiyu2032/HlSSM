@@ -32,7 +32,6 @@ public class Ucoupon {
   private String one;
   private String two;
   private String three;
-  private Coupon coupon;
 
 
   public Integer getUcid() {
@@ -115,12 +114,4 @@ public class Ucoupon {
     this.three = three;
   }
 
-
-  public Coupon getCoupon() {
-    return coupon;
-  }
-
-  public void setCoupon(Coupon coupon) {
-    this.coupon = coupon;
-  }
 }

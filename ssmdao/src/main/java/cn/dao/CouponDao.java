@@ -16,12 +16,15 @@ public interface CouponDao {
 
     /**
      * 用户添加优惠券
+     * @param cid 优惠券编号
+     * @param uid 用户编号
      * @return
      */
-    int addUserUcoupon(Ucoupon uc);
+    int addUserUcoupon(@Param("cid")int cid, @Param("uid")int uid);
 
     /**
      * 用户使用优惠券
+     * @param cid 优惠券编号
      * @param uid 用户编号
      * @return
      */
@@ -29,14 +32,15 @@ public interface CouponDao {
 
     /**
      * 显示用户所有优惠券信息
+     * @param uid 用户编号
      * @return
      */
-    int selUserCoupon(Ucoupon uc);
+    int selUserCoupon(@Param("uid")int uid);
 
     /**
      * 显示优惠券状态 (0.未领取 1.已领取 2.已使用)
+     * @param uid 用户编号
      * @return
      */
-    int selCoupon(Ucoupon uc);
-
+    int selCoupon(@Param("uid")int uid);
 }

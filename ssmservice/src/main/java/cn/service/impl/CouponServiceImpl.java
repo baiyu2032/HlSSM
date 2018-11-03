@@ -2,14 +2,11 @@ package cn.service.impl;
 
 import cn.dao.CouponDao;
 import cn.pojo.Coupon;
-import cn.pojo.Ucoupon;
-import cn.pojo.Ucouponlogo;
 import cn.service.CouponService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository("csi")
@@ -37,16 +34,14 @@ public class CouponServiceImpl implements CouponService {
     /**
      * 用户添加优惠券
      *
-     * @param uc
+     * @param cid 优惠券编号
+     * @param uid 用户编号
      * @return
      */
     @Override
-    public String addUserUcoupon(Ucoupon uc) {
-        int count = 0;
+    public String addUserUcoupon(int cid, int uid) {
         String str = "";
-        uc.getUcid();
-        uc.getUcname();
-        count = couponDao.addUserUcoupon(uc);
+        int count = couponDao.addUserUcoupon(cid,uid);
         if (count == 0){
             str = "添加失败";
         }else if (count == 1){
@@ -59,28 +54,28 @@ public class CouponServiceImpl implements CouponService {
     /**
      * 用户使用优惠券
      *
+     * @param cid 优惠券编号
      * @param uid 用户编号
      * @return
      */
     @Override
     public String updUcoupon(int cid, int uid) {
-        int count = 0;
-        count = couponDao.updUcoupon(cid,uid);
-        String str = "使用成功";
+        int count = couponDao.updUcoupon(cid,uid);
+        String str = "已使用";
+        str = JSON.toJSONString(str);
         return str;
     }
 
     /**
      * 显示用户所有优惠券信息
      *
-     * @param uc
+     * @param uid 用户编号
      * @return
      */
     @Override
-    public int selUserCoupon(Ucoupon uc) {
-        int count = 0;
+    public String selUserCoupon(int uid) {
         String str = "";
-        count = couponDao.selUserCoupon(uc);
+        int count = couponDao.selUserCoupon(uid);
         if (count == 1){
             str = "满100减10";
         }else if (count == 2) {
@@ -88,20 +83,20 @@ public class CouponServiceImpl implements CouponService {
         }else if (count == 3) {
             str = "满300减35";
         }
-        return 0;
+        str = JSON.toJSONString(str);
+        return str;
     }
 
     /**
      * 显示优惠券状态 (0.未领取 1.被占用 2.已使用)
      *
-     * @param uc
+     * @param uid 用户编号
      * @return
      */
     @Override
-    public String selCoupon(Ucoupon uc) {
-        uc.getUcname();
+    public String selCoupon(int uid) {
         String str = "";
-        int count = couponDao.selCoupon(uc);
+        int count = couponDao.selCoupon(uid);
         if (count == 0) {
             str = "未领取！";
         }else if (count == 1) {

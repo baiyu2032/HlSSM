@@ -14,8 +14,8 @@
     <update id="updUcoupon" parameterType="cn.pojo.Ucoupon">
         update ucoupon set uclogo=2 where cid=#{cid} and uid=#{uid}
     </update>
-
-    <select id="selUserCoupon" parameterType="cn.pojo.Ucoupon" resultType="int">
+    
+    <select id="selUserCoup on" parameterType="cn.pojo.Ucoupon" resultType="int">
         select cid from ucoupon where uid=#{uid}
     </select>
 
@@ -23,6 +23,5 @@
     <select id="selCoupon" parameterType="cn.pojo.Ucoupon" resultType="int">
         select uclogo from ucoupon where uid=#{uid}
     </select>
-
 
 </mapper>

@@ -1,12 +1,9 @@
 package cn.controller;
 
-import cn.pojo.Ucoupon;
 import cn.service.CouponService;
 import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +20,7 @@ public class CouponController {
 
     /**
      * 展示优惠券信息
+     *
      * @return
      */
     @ResponseBody
@@ -34,18 +32,21 @@ public class CouponController {
 
     /**
      * 用户添加优惠券
-     * @param uc
+     *
+     * @param cid 优惠券编号
+     * @param uid 用户编号
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "addUserUcoupon" )
+    @RequestMapping(value = "addU serUcoupon" )
     @ApiOperation(value="用户添加优惠券信息",httpMethod="POST",notes="返回添加情况")
-    public String showAdd(@ApiParam(required = true, name ="用户拥有优惠券对象", value ="将参数对象打包为json传入")@RequestBody Ucoupon uc) {
-        return cs.addUserUcoupon(uc);
+    public String showAdd(@RequestParam("cid")int cid,@RequestParam("uid") int uid) {
+        return cs.addUserUcoupon(cid,uid);
     }
 
     /**
      * 用户使用优惠券
+     *
      * @param cid 优惠券编号
      * @param uid 用户编号
      * @return
@@ -59,26 +60,28 @@ public class CouponController {
 
     /**
      * 显示用户所有优惠券信息
-     * @param uc 用户ID
+     *
+     * @param uid 用户编号
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "selAllUcoupon" )
     @ApiOperation(value="显示用户所有优惠券信息",httpMethod="POST",notes="返回优惠券情况")
-    public String selUserCoupon(@RequestBody Ucoupon uc) {
-        return cs.addUserUcoupon(uc);
+    public String selUserCoupon(@RequestParam("uid") int uid) {
+        return cs.selUserCoupon(uid);
     }
 
 
     /**
-     * 显示用户优惠券状态
-     * @param uc
+     * 显示优惠券状态 (0.未领取 1.被占用 2.已使用)
+     *
+     * @param uid 用户编号
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "selCoupon" )
     @ApiOperation(value="显示用户优惠券",httpMethod="POST",notes="返回显示情况")
-    public String showSelCoupon(@ApiParam(required = true, name ="用户拥有优惠券对象", value ="将参数对象打包为json传入")@RequestBody Ucoupon uc) {
-        return cs.selCoupon(uc);
+    public String showSelCoupon(@RequestParam("uid") int uid) {
+        return cs.selCoupon(uid);
     }
 }
