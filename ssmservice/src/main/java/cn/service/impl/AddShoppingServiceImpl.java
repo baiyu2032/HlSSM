@@ -33,17 +33,18 @@ public class AddShoppingServiceImpl implements AddShoppingService {
     @Override
     public Map<String, String> addShop(Order od) {
         Map<String,String> mp = null;
+        String erro = "";
         Order ods = odd.selOrder();
         if(ods != null){
            Ordergoods odgdd = odgd.selOrdergoods(ods.getOgoods());
-          mp = extract(ods,odgdd);
+           mp = extract(ods,odgdd);
         }else{
             int odr = odd.addOrder(od);
             if(odr != 0){
            Ordergoods odgdd = odgd.selOrdergoods(od.getOgoods());
-         mp = extract(od,odgdd);
+           mp = extract(od,odgdd);
             }else{
-                mp = null;
+                mp .put(erro,"数据走失喽！！！");
             }
         }
         return mp;
