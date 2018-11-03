@@ -13,7 +13,7 @@ public interface GoodsDao {
      * 显示全部电脑种类
      * @return
      */
-    List<Goods> getbrand();
+    List<Brand> getbrand();
 
     /**
      * 根据ID查找所在的电脑信息

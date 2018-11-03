@@ -18,5 +18,15 @@ public interface ClassifiedDisplayService {
      */
     String computerShow(int gbra);
 
+    /**
+     * 模糊查询电脑信息
+     * @param string
+     * @return
+     */
     String findByComname(String string);
+    /**
+     * 所有电脑品牌集合
+     * @return
+     */
+    String getallbrand();
 }

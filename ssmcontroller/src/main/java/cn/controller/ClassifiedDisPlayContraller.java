@@ -1,6 +1,5 @@
 package cn.controller;
 
-import cn.config.SensitiveWordFilterConfig;
 import cn.service.ClassifiedDisplayService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -41,4 +40,11 @@ public class ClassifiedDisPlayContraller {
 //        String s1 = swfc.filterInfo(s);
         return cds.findByComname(s);
     }
+    @ResponseBody
+    @RequestMapping(value = "getallbrand")
+    @ApiOperation(value="查询所有品牌种类",httpMethod="POST",notes="返回所有品种json数组")
+    public String getallbrand(){
+        return cds.getallbrand();
+    }
+
 }

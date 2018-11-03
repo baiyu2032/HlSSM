@@ -1,9 +1,6 @@
 package cn.pojo;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Brand {
     /**
      * 品牌编号
@@ -16,15 +13,16 @@ public class Brand {
   private String one;
   private String two;
   private String three;
-  private List<Goods> glist=new ArrayList<Goods>();
-
-  public List<Goods> getGlist() {
-    return this.glist;
-  }
-
-  public void setGlist(List<Goods> glist) {
-    this.glist = glist;
-  }
+//  private List<Goods> glist=new ArrayList<Goods>();
+//
+//
+//  public List<Goods> getGlist() {
+//    return this.glist;
+//  }
+//
+//  public void setGlist(List<Goods> glist) {
+//    this.glist = glist;
+//  }
 
   public long getBid() {
     return bid;

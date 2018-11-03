@@ -40,6 +40,15 @@ public class Goods {
   private String one;
   private String two;
   private String three;
+
+  public Brand getBrand() {
+    return this.brand;
+  }
+
+  public void setBrand(Brand brand) {
+    this.brand = brand;
+  }
+
   private Brand brand;
 
 

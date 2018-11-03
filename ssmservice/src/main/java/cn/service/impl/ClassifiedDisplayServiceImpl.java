@@ -1,5 +1,6 @@
 package cn.service.impl;
 
+import cn.dao.BrandDao;
 import cn.dao.GoodsDao;
 import cn.pojo.Brand;
 import cn.pojo.Goods;
@@ -25,13 +26,23 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
         this.goodsDao = goodsDao;
     }
 
+    @Autowired
+    @Qualifier("bd")
+    private BrandDao brandDao;
+    public BrandDao getBrandDao() {
+        return this.brandDao;
+    }
+    public void setBrandDao(BrandDao brandDao) {
+        this.brandDao = brandDao;
+    }
+
     /**
      * 显示全部电脑种类
      * @return  电脑种类json数组
      */
     @Override
     public String getbrand() {
-        List<Goods> brands=goodsDao.getbrand();
+        List<Brand> brands=goodsDao.getbrand();
         String s = JSON.toJSONString(brands);
         return s;
     }
@@ -44,6 +55,7 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
     @Override
     public String computerShow(int gbra) {
         List<Goods> corres = goodsDao.corres(gbra);
+
         String s = JSON.toJSONString(corres);
         return s;
     }
@@ -52,6 +64,18 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
     public String findByComname(String string) {
         List<Goods> byName = goodsDao.findByName(string);
         String s = JSON.toJSONString(byName);
+        return s;
+    }
+
+    /**
+     * 所有电脑品牌集合
+     *
+     * @return
+     */
+    @Override
+    public String getallbrand() {
+        List<Brand> getallbrand = brandDao.getallbrand();
+        String s = JSON.toJSONString(getallbrand);
         return s;
     }
 }

@@ -4,32 +4,32 @@
 
 <!--suppress ALL -->
 <mapper namespace="cn.dao.GoodsDao">
-	<resultMap type="goods" id="goodsandbrand">
-		<result column="gid" property="gid"/>
-		<result column="gname" property="gname"/>
-		<result column="gimg" property="gimg"/>
-		<result column="gsum" property="gsum"/>
-		<result column="gmoney" property="gmoney"/>
-		<result column="glogo" property="glogo"/>
-		<result column="ginfo" property="ginfo"/>
-		<result column="gnum" property="gnum"/>
-		<result column="one" property="one"/>
-		<result column="two" property="two"/>
-		<result column="three" property="three"/>
+	<resultMap type="Goods" id="goodsandbrand">
+		<!--<result column="gid" property="gid"/>-->
+		<!--<result column="gname" property="gname"/>-->
+		<!--<result column="gimg" property="gimg"/>-->
+		<!--<result column="gsum" property="gsum"/>-->
+		<!--<result column="gmoney" property="gmoney"/>-->
+		<!--<result column="glogo" property="glogo"/>-->
+		<!--<result column="ginfo" property="ginfo"/>-->
+		<!--<result column="gnum" property="gnum"/>-->
+		<!--<result column="one" property="one"/>-->
+		<!--<result column="two" property="two"/>-->
+		<!--<result column="three" property="three"/>-->
 		<result column="gbra" property="gbra"/>
 		<association property="brand" javaType="Brand">
 			<result column="bid" property="bid"/>
 			<result column="bname" property="bname"/>
-			<result column="one" property="one"/>
-			<result column="two" property="two"/>
-			<result column="three" property="three"/>
+			<!--<result column="one" property="one"/>-->
+			<!--<result column="two" property="two"/>-->
+			<!--<result column="three" property="three"/>-->
 		</association>
 	</resultMap>
 	<select id="corres" resultType="cn.pojo.Goods">
-		select gid,gname,gimg,gsum,gmoney,ginfo,gnum,glogo from goods where gbra=#{gbra};
+		select * from goods where gbra=#{gbra};
 	</select>
 	<select id="getbrand" resultMap="goodsandbrand">
-		select * from brand b ,goods g WHERE b.bid=g.gid
+		select bname,bid from brand b ,goods g WHERE b.bid=g.gbra
 	</select>
 	<select id="findByName" resultType="cn.pojo.Goods" parameterType="cn.pojo.Goods">
 		select * from goods
