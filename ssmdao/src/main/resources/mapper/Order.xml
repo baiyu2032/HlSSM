@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.dao.OrderDao">
     <insert id="addOrder" parameterType="cn.pojo.Order">
-        INSERT INTO `order` VALUES(0,#{onum},#{ogoods},#{olocal},#{ologo},#{oremark},NULL,null)
+        insert into order values(0,#{onum},#{ogoods},#{olocal},#{ologo},#{oremark},0,0)
     </insert>
     <select id="selOrder" resultType="cn.pojo.Order">
-        SELECT onum,ogoods,olocal,ologo,oremark FROM `order`
+        select ogid,onum,ogoods,olocal,ologo,oremark from order
     </select>
 </mapper>

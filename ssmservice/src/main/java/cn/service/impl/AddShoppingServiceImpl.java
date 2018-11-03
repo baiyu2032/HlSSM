@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service("addshop")
 public class AddShoppingServiceImpl implements AddShoppingService {
     @Autowired
@@ -28,24 +31,26 @@ public class AddShoppingServiceImpl implements AddShoppingService {
      * @return  订单信息
      */
     @Override
-    public String addShop(Order od) {
-        String info = null;
+    public Map<String, String> addShop(Order od) {
+        Map<String,String> mp = null;
         Order ods = odd.selOrder();
         if(ods != null){
-            info = JSON.toJSONString(ods);
+           Ordergoods odgdd = odgd.selOrdergoods(ods.getOgoods());
+          mp = extract(ods,odgdd);
         }else{
             int odr = odd.addOrder(od);
             if(odr != 0){
-                info = JSON.toJSONString(od);
+           Ordergoods odgdd = odgd.selOrdergoods(od.getOgoods());
+         mp = extract(od,odgdd);
             }else{
-                info = "信息走失喽!!!";
+                mp = null;
             }
         }
-        return info;
+        return mp;
     }
 
     /**
-     * 展示订单商品信息
+     * 添加订单商品信息
      * @return 订单商品信息
      */
     @Override
@@ -58,6 +63,24 @@ public class AddShoppingServiceImpl implements AddShoppingService {
             shopinfo = "信息走失喽!!!";
         }
         return shopinfo;
+    }
+
+    /**
+     * 冗余代码提取
+     * @return
+     */
+    @Override
+    public Map<String, String> extract(Order od,Ordergoods odgd) {
+        Map<String,String> mp = new HashMap<String, String>();
+        String info = "";
+        String infos = "";
+        String infoo = "";
+        String infoos = "";
+        infos = JSON.toJSONString(od);
+        mp.put(info,infos);
+        infoos = JSON.toJSONString(odgd);
+        mp.put(infoo,infoos);
+        return mp;
     }
 
 }

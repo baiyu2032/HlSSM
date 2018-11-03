@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Map;
+
 @RequestMapping("addshop/")
 @Controller
 @Api(value="页面展示",description="具体描述")
@@ -33,8 +35,8 @@ public class AddShoppingContraller {
 
     @RequestMapping(value = "addshops")
     @ResponseBody
-    @ApiOperation(value="订单展示",httpMethod="POST",notes="返回JSON订单信息")
-    public String addShop(@RequestBody Order od){
+    @ApiOperation(value="订单展示",httpMethod="POST",notes="返回Map订单信息")
+    public Map<String, String> addShop(@RequestBody Order od){
         return ass.addShop(od);
     }
 }
