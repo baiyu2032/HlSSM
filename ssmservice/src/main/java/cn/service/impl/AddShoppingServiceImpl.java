@@ -5,10 +5,12 @@ import cn.dao.OrdergoodsDao;
 import cn.pojo.Order;
 import cn.pojo.Ordergoods;
 import cn.service.AddShoppingService;
+import cn.service.UserCodingService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import util.DateUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +27,24 @@ public class AddShoppingServiceImpl implements AddShoppingService {
     private OrdergoodsDao odgd;
     public OrdergoodsDao getOdgd() {return this.odgd;}
     public void setOdgd(OrdergoodsDao odgd) {this.odgd = odgd;}
+    @Autowired
+    @Qualifier("ucs")
+    private UserCodingService ucs;
+    public UserCodingService getUcs() {
+        return ucs;
+    }
+    public void setUcs(UserCodingService ucs) {
+        this.ucs = ucs;
+    }
+    @Autowired
+    @Qualifier("dt")
+    private DateUtil dt;
+    public DateUtil getDt() {
+        return this.dt;
+    }
+    public void setDt(DateUtil dt) {
+        this.dt = dt;
+    }
 
     /**
      * 展示订单信息
@@ -37,11 +57,19 @@ public class AddShoppingServiceImpl implements AddShoppingService {
         Order ods = odd.selOrder();
         if(ods != null){
            Ordergoods odgdd = odgd.selOrdergoods(ods.getOgoods());
+            //订单编码
+            ods.setOnum(ucs.usernums(odgdd.getUopenid()));
+            //订单时间
+            ods.setOdate(dt.selDate());
            mp = extract(ods,odgdd);
         }else{
             int odr = odd.addOrder(od);
             if(odr != 0){
            Ordergoods odgdd = odgd.selOrdergoods(od.getOgoods());
+           //订单编码
+           od.setOnum(ucs.usernums(odgdd.getUopenid()));
+           //订单时间
+           od.setOdate(dt.selDate());
            mp = extract(od,odgdd);
             }else{
                 mp .put(erro,"数据走失喽！！！");
@@ -65,7 +93,6 @@ public class AddShoppingServiceImpl implements AddShoppingService {
         }
         return shopinfo;
     }
-
     /**
      * 冗余代码提取
      * @return
@@ -83,5 +110,4 @@ public class AddShoppingServiceImpl implements AddShoppingService {
         mp.put(infoo,infoos);
         return mp;
     }
-
 }

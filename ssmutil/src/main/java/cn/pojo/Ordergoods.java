@@ -36,7 +36,7 @@ public class Ordergoods {
   /**
    * 微信用户唯一标识
    */
-  private long uopenid;
+  private String uopenid;
   private long onum;
   private String one;
   private String two;
@@ -115,11 +115,11 @@ public class Ordergoods {
   }
 
 
-  public long getUopenid() {
+  public String getUopenid() {
     return uopenid;
   }
 
-  public void setUopenid(long uopenid) {
+  public void setUopenid(String uopenid) {
     this.uopenid = uopenid;
   }
 
