@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import util.PageUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 分类展示种类信息
@@ -92,12 +94,13 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
     /**
      * 分页查询全部
      *
-     * @param index 当前页吗
+     * @param index 当前页码
      * @param page  每页页码
      * @return
      */
     @Override
     public String getallgoods(int index, int page) {
+        Map<String,Object> map = new HashMap<String, Object>();
         PageUtil p=new PageUtil();
         p.setPageSize(page);
         if (count==0){
@@ -106,8 +109,11 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
         p.setTotalCount(count);
         System.out.println(count);
         p.setIndex(index);
-        p.setjList(goodsDao.getallgoods(index,page));
-        String string = JSON.toJSONString(goodsDao.getallgoods(index, page));
+        int Number = (index - 1) * p.getPageSize();
+        p.setjList(goodsDao.getallgoods(Number,page));
+        map.put("data",goodsDao.getallgoods(Number, page));
+        map.put("page",index);
+        String string = JSON.toJSONString(map);
         return string;
     }
 }
