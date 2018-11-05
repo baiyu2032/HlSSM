@@ -9,6 +9,7 @@ import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+import util.PageUtil;
 
 import java.util.List;
 
@@ -17,7 +18,6 @@ import java.util.List;
  */
 @Repository("cdsi")
 public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
-
     @Autowired
     @Qualifier("gd")
     private GoodsDao goodsDao;
@@ -77,5 +77,37 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
         List<Brand> getallbrand = brandDao.getallbrand();
         String s = JSON.toJSONString(getallbrand);
         return s;
+    }
+
+
+    int count;
+    /**
+     * 后驱总记录数
+     */
+    @Override
+    public void getcount() {
+        count=goodsDao.getcount();
+    }
+
+    /**
+     * 分页查询全部
+     *
+     * @param index 当前页吗
+     * @param page  每页页码
+     * @return
+     */
+    @Override
+    public String getallgoods(int index, int page) {
+        PageUtil p=new PageUtil();
+        p.setPageSize(page);
+        if (count==0){
+            getcount();
+        }
+        p.setTotalCount(count);
+        System.out.println(count);
+        p.setIndex(index);
+        p.setjList(goodsDao.getallgoods(index,page));
+        String string = JSON.toJSONString(goodsDao.getallgoods(index, page));
+        return string;
     }
 }

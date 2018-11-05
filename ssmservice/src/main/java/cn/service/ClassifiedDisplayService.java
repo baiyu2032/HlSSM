@@ -1,5 +1,7 @@
 package cn.service;
 
+import util.PageUtil;
+
 /**
  * 分类展示信息
  * author: len
@@ -29,4 +31,16 @@ public interface ClassifiedDisplayService {
      * @return
      */
     String getallbrand();
+
+    /**
+     * 后驱总记录数
+     */
+    void getcount();
+    /**
+     * 分页查询全部
+     * @param index  当前页吗
+     * @param page   每页页码
+     * @return
+     */
+    String getallgoods(int index, int page);
 }
