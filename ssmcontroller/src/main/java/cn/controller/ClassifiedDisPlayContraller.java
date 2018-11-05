@@ -6,8 +6,8 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 @RequestMapping("display/")
 @Controller
 @Api(value = "页面展示",description = "具体描述")
@@ -47,4 +47,10 @@ public class ClassifiedDisPlayContraller {
         return cds.getallbrand();
     }
 
+    @ResponseBody
+    @RequestMapping("getallgoods")
+    @ApiOperation(value = "分页查询所有商品",httpMethod = "POST",notes = "返回每页的商品")
+    public String getallgoods(@RequestParam("index")int index, @RequestParam("page")int page){
+        return cds.getallgoods(index,page);
+    }
 }

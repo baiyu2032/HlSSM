@@ -39,4 +39,10 @@
 		</if>
 		</trim>
 	</select>
+    <select id="getallgoods" resultType="cn.pojo.Goods">
+		select * from goods limit #{index},#{pagesize}
+	</select>
+	<select id="getcount" resultType="java.lang.Integer">
+		select count(0) from goods;
+	</select>
 </mapper>

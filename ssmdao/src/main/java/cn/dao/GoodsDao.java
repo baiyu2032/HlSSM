@@ -28,6 +28,17 @@ public interface GoodsDao {
      * @return
      */
     List<Goods> findByName(@Param("gname") String gname);
+
+    /**
+     * 获取总记录数
+     * @return
+     */
+    int getcount();
+    /**
+     * 分页显示所有电脑商品
+     * @return
+     */
+    List<Goods> getallgoods(@Param("index") int index, @Param("pagesize") int pagesize);
 }
 
 
