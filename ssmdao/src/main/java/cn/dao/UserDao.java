@@ -45,7 +45,7 @@ public interface UserDao {
      * @param num 用户码
      * @return 返回是否为0
      */
-    String selUserNum(@Param("num") String num);
+    int selUserNum(@Param("num") String num);
     /**
      * 查询用户码
      * @param uopenid 用户编号

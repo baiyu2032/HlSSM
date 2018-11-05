@@ -22,7 +22,6 @@ public class UserCodingServiceImpl implements UserCodingService {
     @Autowired
     @Qualifier("locUser")
     private UserDao ud;
-
     public UserDao getUd() {
         return ud;
     }
@@ -30,6 +29,7 @@ public class UserCodingServiceImpl implements UserCodingService {
         this.ud = ud;
     }
     private User u;
+
 
 
 
