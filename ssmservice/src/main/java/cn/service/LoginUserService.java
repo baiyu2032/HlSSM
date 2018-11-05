@@ -34,6 +34,6 @@ public interface LoginUserService {
      * @Author:13654
      * @Date: 2018/11/4 21:50
      */
-    String addUser(User user);
+    String addUser(String uname ,String code);
 
 }
