@@ -24,5 +24,4 @@
         select uclogo from ucoupon where uid=#{uid}
     </select>
 
-
 </mapper>

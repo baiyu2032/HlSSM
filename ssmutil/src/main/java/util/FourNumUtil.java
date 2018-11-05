@@ -11,15 +11,13 @@ public class FourNumUtil {
      * @return  生成账号
      */
     public String CreateAccount() {
+        String num = "";
         Random random = new Random();
-        User us = new User();
-        int account = 0;
-            do {
-                //随机生成5位以内随机数
-           account = random.nextInt(10000);
-                //生成随机数不能少于4位
-            }while (account < 1000);
-            String num = Integer.toString(account);
+        for(int i = 0;i < 3;i ++){
+            num += random.nextInt(10);
+        }
             return num;
     }
+
+
 }
