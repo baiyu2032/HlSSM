@@ -29,17 +29,14 @@ public class UserCodingServiceImpl implements UserCodingService {
     public void setUd(UserDao ud) {
         this.ud = ud;
     }
+    private User u;
     /**
-     * 生成订单码
+     * 生成用户码
      * @return
      */
     @Override
     public String usernum() {
-        User u = new User();
         String usernum = null;
-        Date currentTime = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd HHmmss");
-        String dateString = formatter.format(currentTime);
         Boolean cout = true;
       do{
           if(fnu.CreateAccount() == null){
@@ -47,10 +44,20 @@ public class UserCodingServiceImpl implements UserCodingService {
           }
          usernum = fnu.CreateAccount();
       }while (cout);
-        String usernums = dateString + usernum;
+        return usernum;
+    }
+
+    /**
+     * 生成订单编码
+     * @return 订单编码
+     */
+    public String usernums(){
+        Date currentTime = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd HHmmss");
+        String dateString = formatter.format(currentTime);
+        String usernums = dateString + usernum();
         u.setUsernum(usernums);
         return usernums;
     }
-
 
 }
