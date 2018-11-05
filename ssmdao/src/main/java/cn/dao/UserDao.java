@@ -40,4 +40,11 @@ public interface UserDao {
      * @Date: 2018/11/4 21:22
      */
     User selUser(@Param("uopenid") String uopenid);
+
+    /**
+     * 查询是否有相同的用户码
+     * @param num 用户码
+     * @return 返回是否为0
+     */
+    String selUserNum(@Param("num") String num);
 }

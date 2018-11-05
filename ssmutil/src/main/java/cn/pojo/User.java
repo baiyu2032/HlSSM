@@ -25,9 +25,9 @@ public class User {
    */
   private String ulogo;
   /**
-   * 冗余1
+   * 用户码
    */
-  private String one;
+  private String usernum;
   /**
    * 冗余2
    */
@@ -82,14 +82,6 @@ public class User {
     this.ulogo = ulogo;
   }
 
-  public String getOne() {
-    return one;
-  }
-
-  public void setOne(String one) {
-    this.one = one;
-  }
-
 
   public String getTwo() {
     return two;
@@ -108,4 +100,11 @@ public class User {
     this.three = three;
   }
 
+  public String getUsernum() {
+    return usernum;
+  }
+
+  public void setUsernum(String usernum) {
+    this.usernum = usernum;
+  }
 }
