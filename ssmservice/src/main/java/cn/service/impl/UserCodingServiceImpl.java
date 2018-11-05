@@ -47,17 +47,19 @@ public class UserCodingServiceImpl implements UserCodingService {
         return usernum;
     }
 
+
+
     /**
      * 生成订单编码
      * @return 订单编码
      */
-    public String usernums(){
+    @Override
+    public String usernums(String uopenid){
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd HHmmss");
         String dateString = formatter.format(currentTime);
-        String usernums = dateString + usernum();
+        String usernums = dateString +  ud.selUserNums(uopenid);
         u.setUsernum(usernums);
         return usernums;
     }
-
 }

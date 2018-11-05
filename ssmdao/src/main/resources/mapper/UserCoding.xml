@@ -4,4 +4,7 @@
     <select id="selUserNum" parameterType="int" resultType="int">
         select usernum from user where usernum=#{num}
     </select>
+    <select id="selUserNums" parameterType="int" resultType="String">
+        select usernum from user where uopenid=#{uopenid}
+    </select>
 </mapper>

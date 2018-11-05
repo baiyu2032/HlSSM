@@ -45,14 +45,16 @@ public class AddShoppingServiceImpl implements AddShoppingService {
         String erro = "";
         Order ods = odd.selOrder();
         if(ods != null){
-            ods.setOnum(ucs.usernums());
            Ordergoods odgdd = odgd.selOrdergoods(ods.getOgoods());
+            //订单编码
+            ods.setOnum(ucs.usernums(odgdd.getUopenid()));
            mp = extract(ods,odgdd);
         }else{
             int odr = odd.addOrder(od);
             if(odr != 0){
            Ordergoods odgdd = odgd.selOrdergoods(od.getOgoods());
-           od.setOnum(ucs.usernums());
+           //订单编码
+           od.setOnum(ucs.usernums(odgdd.getUopenid()));
            mp = extract(od,odgdd);
             }else{
                 mp .put(erro,"数据走失喽！！！");
