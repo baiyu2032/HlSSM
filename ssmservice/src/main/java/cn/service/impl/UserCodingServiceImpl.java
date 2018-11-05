@@ -30,22 +30,7 @@ public class UserCodingServiceImpl implements UserCodingService {
         this.ud = ud;
     }
     private User u;
-    /**
-     * 生成用户码
-     * @return
-     */
-    @Override
-    public String usernum() {
-        String usernum = null;
-        Boolean cout = true;
-      do{
-          if(fnu.CreateAccount() == null){
-              cout = false;
-          }
-         usernum = fnu.CreateAccount();
-      }while (cout);
-        return usernum;
-    }
+
 
 
 
