@@ -8,7 +8,7 @@ public class Order {
   /**
    * 订单编号
    */
-  private long onum;
+  private String onum;
   /**
    * 订单商品
    */
@@ -39,11 +39,11 @@ public class Order {
     this.oid = oid;
   }
 
-  public long getOnum() {
+  public String getOnum() {
     return onum;
   }
 
-  public void setOnum(long onum) {
+  public void setOnum(String onum) {
     this.onum = onum;
   }
 

@@ -30,7 +30,7 @@ public class UserCodingServiceImpl implements UserCodingService {
         this.ud = ud;
     }
     /**
-     * 生成用户码
+     * 生成订单码
      * @return
      */
     @Override
