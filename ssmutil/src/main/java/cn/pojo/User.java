@@ -9,10 +9,13 @@ public class User {
    * 微信唯一标识
    */
   private String uopenid;
+
   /**
-   * 用户地址
+   * 用户名
    */
-  private String ulocal;
+  private String uname;
+
+
   /**
    * 退货售后
    */
@@ -53,12 +56,12 @@ public class User {
   }
 
 
-  public String getUlocal() {
-    return ulocal;
+  public String getUname() {
+    return this.uname;
   }
 
-  public void setUlocal(String ulocal) {
-    this.ulocal = ulocal;
+  public void setUname(String uname) {
+    this.uname = uname;
   }
 
 
@@ -78,7 +81,7 @@ public class User {
   public void setUlogo(String ulogo) {
     this.ulogo = ulogo;
   }
-  
+
   public String getOne() {
     return one;
   }
