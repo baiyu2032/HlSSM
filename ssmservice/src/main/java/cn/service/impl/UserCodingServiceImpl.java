@@ -22,6 +22,7 @@ public class UserCodingServiceImpl implements UserCodingService {
     @Autowired
     @Qualifier("locUser")
     private UserDao ud;
+
     public UserDao getUd() {
         return ud;
     }
@@ -31,9 +32,6 @@ public class UserCodingServiceImpl implements UserCodingService {
     private User u;
 
 
-
-
-
     /**
      * 生成订单编码
      * @return 订单编码
@@ -41,7 +39,7 @@ public class UserCodingServiceImpl implements UserCodingService {
     @Override
     public String usernums(String uopenid){
         Date currentTime = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd HHmmss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHsHmms");
         String dateString = formatter.format(currentTime);
         String usernums = dateString +  ud.selUserNums(uopenid);
         u.setUsernum(usernums);
