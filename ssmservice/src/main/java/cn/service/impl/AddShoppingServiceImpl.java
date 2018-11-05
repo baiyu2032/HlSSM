@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import util.DateUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +36,16 @@ public class AddShoppingServiceImpl implements AddShoppingService {
     public void setUcs(UserCodingService ucs) {
         this.ucs = ucs;
     }
+    @Autowired
+    @Qualifier("dt")
+    private DateUtil dt;
+    public DateUtil getDt() {
+        return this.dt;
+    }
+    public void setDt(DateUtil dt) {
+        this.dt = dt;
+    }
+
     /**
      * 展示订单信息
      * @return  订单信息
@@ -48,6 +59,8 @@ public class AddShoppingServiceImpl implements AddShoppingService {
            Ordergoods odgdd = odgd.selOrdergoods(ods.getOgoods());
             //订单编码
             ods.setOnum(ucs.usernums(odgdd.getUopenid()));
+            //订单时间
+            ods.setOdate(dt.selDate());
            mp = extract(ods,odgdd);
         }else{
             int odr = odd.addOrder(od);
@@ -55,6 +68,8 @@ public class AddShoppingServiceImpl implements AddShoppingService {
            Ordergoods odgdd = odgd.selOrdergoods(od.getOgoods());
            //订单编码
            od.setOnum(ucs.usernums(odgdd.getUopenid()));
+           //订单时间
+           od.setOdate(dt.selDate());
            mp = extract(od,odgdd);
             }else{
                 mp .put(erro,"数据走失喽！！！");
@@ -95,6 +110,4 @@ public class AddShoppingServiceImpl implements AddShoppingService {
         mp.put(infoo,infoos);
         return mp;
     }
-
-
 }
