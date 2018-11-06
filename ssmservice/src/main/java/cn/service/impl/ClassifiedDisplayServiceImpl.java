@@ -116,4 +116,17 @@ public class ClassifiedDisplayServiceImpl implements ClassifiedDisplayService {
         String string = JSON.toJSONString(map);
         return string;
     }
+
+    /**
+     * 根据商品ID查询对应电脑
+     *
+     * @param gid 商品ID
+     * @return 电脑对象
+     */
+    @Override
+    public String getgoodsbyid(int gid) {
+        Goods getgoodsbyid = goodsDao.getgoodsbyid(gid);
+        String string = JSON.toJSONString(getgoodsbyid);
+        return string;
+    }
 }

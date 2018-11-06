@@ -39,6 +39,13 @@ public interface GoodsDao {
      * @return
      */
     List<Goods> getallgoods(@Param("index") int index, @Param("pagesize") int pagesize);
+
+    /**
+     * 根据商品ID查询对应电脑
+     * @param gid  商品ID
+     * @return   电脑对象
+     */
+    Goods getgoodsbyid(@Param("gid") int gid);
 }
 
 
