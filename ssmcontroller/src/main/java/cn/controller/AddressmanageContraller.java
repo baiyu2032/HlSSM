@@ -58,7 +58,14 @@ public class AddressmanageContraller {
     @ResponseBody
     @RequestMapping(value = "selLocal")
     @ApiOperation(value="查找用户收货地址",httpMethod="GET",notes="返回查询情况")
-    public Map<String,String> selsectlocal(@RequestParam("uid") int uid){
+    public String selsectlocal(@RequestParam("uid") int uid){
      return local.selLocal(uid);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "selLocalInfo")
+    @ApiOperation(value="查找用户单条收货地址",httpMethod="GET",notes="返回查询情况")
+    public String selLocalInfo(@RequestParam("aid") int aid,@RequestParam("uid") int uid){
+        return local.selLoncalinfo(aid,uid);
     }
 }

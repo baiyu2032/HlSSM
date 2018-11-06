@@ -65,5 +65,17 @@ public interface AddressmanageService {
      * @Author:13654
      * @Date: 2018/11/2 16:18
      */
-    Map<String,String> selLocal(int uid);
+    String selLocal(int uid);
+
+    /**
+     * 功能描述: <br>
+     * 〈查询单条用户地址〉
+     *
+     * @param uid,aid
+     * @return:
+     * @since: 1.0.0
+     * @Author:13654
+     * @Date: 2018/11/6 13:15
+     */
+    String selLoncalinfo(int aid,int uid);
 }

@@ -43,11 +43,15 @@ public class VerifyUtil {
 	 */
 	public String address(String address){
 		String str = null;
-		String regex ="^([\u4E00-\u9FA5A-Za-z0-9_]+(省|市|区)){2,}$";
+		String regex ="^([\u4E00-\u9FA5A-Za-z0-9_]+(省|市|区|街|号)){2,}$";
+		String regex1 ="^([\u4E00-\u9FA5A-Za-z0-9_]+(省|市|县|街|号)){2,}$";
 		Pattern p = Pattern.compile(regex);
+		Pattern p1 = Pattern.compile(regex1);
 	    Matcher m = p.matcher(address);
+		Matcher m1 = p1.matcher(address);
 	    boolean isMatch = m.matches();
-	    if (!isMatch) {
+	    boolean is = m1.matches();
+	    if (!isMatch&&!is) {
 	        str ="请填入正确的地址";
 	        return str;
 	    }
