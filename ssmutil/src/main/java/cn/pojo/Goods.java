@@ -37,7 +37,7 @@ public class Goods {
      * 商品标识 0.下架 1.上架
      */
   private long glogo;
-  private String one;
+  private String ginfoimg;
   private String two;
   private String three;
 
@@ -132,17 +132,15 @@ public class Goods {
     this.glogo = glogo;
   }
 
+    public String getGinfoimg() {
+        return this.ginfoimg;
+    }
 
-  public String getOne() {
-    return one;
-  }
+    public void setGinfoimg(String ginfoimg) {
+        this.ginfoimg = ginfoimg;
+    }
 
-  public void setOne(String one) {
-    this.one = one;
-  }
-
-
-  public String getTwo() {
+    public String getTwo() {
     return two;
   }
 
