@@ -76,7 +76,7 @@ public class CouponServiceImpl implements CouponService {
     public String selUserCoupon(int uid) {
         String str = "";
         int count = couponDao.selUserCoupon(uid);
-        if (count == 1){
+        if (count == 1) {
             str = "满100减10";
         }else if (count == 2) {
             str = "满200减25";
