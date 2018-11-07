@@ -77,4 +77,16 @@ public interface AddressDao {
      */
     List<Address> selectlocal(@Param("uid")int uid);
 
+    /**
+     * 功能描述: <br>
+     * 〈查询用户单条地址信息〉
+     *
+     * @param uid,aid
+     * @return:
+     * @since: 1.0.0
+     * @Author:13654
+     * @Date: 2018/11/6 12:30
+     */
+    Address selLocal(@Param("aid") int aid , @Param("uid") int uid);
+
 }

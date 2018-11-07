@@ -6,24 +6,7 @@
         insert into address value(0,#{aname},#{phone},#{postcode},#{local},#{uid},#{adefault})
     </insert>
     <update id="updateLocal" parameterType="Address">
-        UPDATE address
-        <trim prefix="set" suffixOverrides="," suffix="WHERE uid=#{uid} and aid = #{aid}">
-            <if test="aname != null">
-                aname =#{aname},
-            </if>
-            <if test="phone != null">
-                phone =#{phone},
-            </if>
-            <if test="postcode != null">
-                postcode=#{postcode},
-            </if>
-            <if test="local != null">
-                local=#{local},
-            </if>
-            <if test="adefault!=null">
-                adefault=#{adefault}
-            </if>
-        </trim>
+        UPDATE address SET aname = #{aname},phone=#{phone},postcode=#{postcode},`local`=#{local}WHERE uid = #{uid} and aid= #{aid}
     </update>
     <delete id="delLocal" >
         delete  from address  where uid = #{uid} and aid=#{aid}
@@ -32,7 +15,10 @@
         select count(1) from address where uid = #{uid}
     </select>
     <select id="selectlocal" resultType="cn.pojo.Address" parameterType="int">
-        select aname,phone,postcode,local,adefault from address where uid = #{uid}
+        select aid,aname,phone,postcode,local,adefault from address where uid = #{uid}
+    </select>
+    <select id="selLocal" resultType="cn.pojo.Address">
+        select aid,aname,phone,postcode,local,adefault from address where uid = #{uid} and aid = #{aid}
     </select>
 
 </mapper>

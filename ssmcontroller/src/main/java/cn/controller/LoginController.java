@@ -40,4 +40,12 @@ public class LoginController {
         String loginfo = loginUserService.logUser(code);
         return loginfo;
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = "addUser")
+    public String addToLogin(@RequestParam("uname") String uname,@RequestParam("code") String code) {
+        return loginUserService.addUser(uname, code);
+    }
+
 }

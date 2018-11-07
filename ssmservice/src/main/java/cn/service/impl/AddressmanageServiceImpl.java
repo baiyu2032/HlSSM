@@ -62,6 +62,7 @@ public class AddressmanageServiceImpl implements AddressmanageService {
      */
     @Override
     public String addLocal(Address address) {
+        Map<String,Object> map = new HashMap<String, Object>();
         String retinfo=null;
         String na = address.getAname();
         String loc = address.getLocal();
@@ -70,7 +71,9 @@ public class AddressmanageServiceImpl implements AddressmanageService {
         Integer uid = address.getUid();
         if (util.name(na)==null&&util.Phone(pho)==null&&util.address(loc)==null&&util.postcode(post)==null) {
             if (addressDao.localCount(uid)>=3){
-                return "地址添加达到上限！请删除地址后重试！";
+                map.put("code","1");
+                map.put("errmsg","地址添加达到上限！请删除地址后重试！");
+                return JSON.toJSONString(map);
             }
             if(addressDao.localCount(uid)==0){
                 address.setAdefault(1);
@@ -79,55 +82,43 @@ public class AddressmanageServiceImpl implements AddressmanageService {
             }
             int addlocal = addressDao.addLocal(address);
             if(addlocal != 0){
-                retinfo = "增加成功！";
+                map.put("code","0");
+                map.put("errmsg","添加成功");
             }else{
-                retinfo = "增加失败!";
+                map.put("code","1");
+                map.put("errmsg","添加失败");
             }
         }else{
-            return "信息格式有误请重新输入";
+            map.put("code","1");
+            map.put("errmsg","添加失败格式有误");
         }
-        return retinfo;
+        return JSON.toJSONString(map);
     }
 
 
     @Override
     public String updateLocal(Address address) {
         String retinfo = null;
+        Map<String,Object> map = new HashMap<String, Object>();
         String na = address.getAname();
         String loc = address.getLocal();
         String pho = address.getPhone();
         String post = address.getPostcode();
-        if (na!=null){
-            String name = util.name(na);
-            if (name!=null){
-                return name;
+        if (util.name(na)==null&&util.Phone(pho)==null&&util.address(loc)==null&&util.postcode(post)==null) {
+            int fleg = addressDao.updateLocal(address);
+            if (fleg!=0){
+                map.put("code","0");
+                map.put("errmsg","修改成功");
+
+            }else{
+                map.put("code","1");
+                map.put("errmsg","修改失败");
             }
-        }
-        if (loc!=null){
-            String addres= util.address(loc);
-            if (addres!=null){
-                return addres;
-            }
-        }
-        if (pho!=null){
-            String phone = util.Phone(pho);
-            if (phone!=null){
-                return phone;
-            }
-        }
-        if (post!=null){
-            String postcode = util.postcode(post);
-            if (post!=null){
-                return postcode;
-            }
-        }
-        int fleg = addressDao.updateLocal(address);
-        if (fleg!=0){
-            retinfo="修改成功";
         }else{
-            retinfo="修改失败";
+            map.put("code","1");
+            map.put("errmsg","修改失败格式有误");
         }
-        return retinfo;
+        return JSON.toJSONString(map);
     }
 
     @Override
@@ -148,16 +139,32 @@ public class AddressmanageServiceImpl implements AddressmanageService {
     }
 
     @Override
-        public Map<String,String> selLocal(int uid) {
+        public String selLocal(int uid) {
         List<Address> list = null;
-        Map<String,String> map = new HashMap<String, String>();
+        Map<String,Object> map = new HashMap<String, Object>();
         list=addressDao.selectlocal(uid);
         if (list != null&&!list.isEmpty()){
             map.put("errmsg","查找成功");
-            map.put("data",JSON.toJSONString(list));
+            map.put("data",list);
         }else{
-            map.put("errmsg","查找失败当前没有数据");
+            map.put("errmsg","当前没有地址请添加");
         }
-        return map;
+
+        return  JSON.toJSONString(map) ;
+    }
+
+    @Override
+    public String selLoncalinfo(int aid, int uid) {
+        Map<String,Object> map = new HashMap<String, Object>();
+        Address address = addressDao.selLocal(aid, uid);
+        if (address != null){
+            map.put("code","0");
+            map.put("errmsg","查找成功");
+            map.put("data",address);
+        }else{
+            map.put("errmsg","当前没有地址请添加");
+            map.put("code","1");
+        }
+        return  JSON.toJSONString(map);
     }
 }

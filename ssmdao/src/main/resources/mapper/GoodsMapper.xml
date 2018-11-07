@@ -39,4 +39,13 @@
 		</if>
 		</trim>
 	</select>
+    <select id="getallgoods" resultType="cn.pojo.Goods">
+		select * from goods limit #{index},#{pagesize}
+	</select>
+	<select id="getcount" resultType="java.lang.Integer">
+		select count(0) from goods;
+	</select>
+    <select id="getgoodsbyid" resultType="cn.pojo.Goods">
+        select gname,gimg,gsum,gmoney,gbra,ginfo,gnum,glogo,ginfoimg from goods where gid=#{gid}
+    </select>
 </mapper>
