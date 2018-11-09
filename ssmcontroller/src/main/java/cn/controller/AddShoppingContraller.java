@@ -4,6 +4,7 @@ import cn.pojo.Order;
 import cn.pojo.Ordergoods;
 import cn.service.AddShoppingService;
 import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiImplicitParam;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,8 @@ public class AddShoppingContraller {
 
     @RequestMapping(value = "addshopping")
     @ResponseBody
-    @ApiOperation(value="订单商品展示",httpMethod="post",notes="返回JSON订单商品信息")
+    @ApiImplicitParam(paramType = "query",name ="odg",required = true,value = "订单商品详情",dataType = "Ordergoods")
+    @ApiOperation(value="订单商品",httpMethod="POST",notes="返回JSON订单商品信息",response = String.class)
     public String addShopping(@ApiParam(required = true, name ="参数", value ="将参数对象打包为json传入")@RequestBody Ordergoods odg){
         return ass.addSho(odg);
     }
@@ -35,7 +37,8 @@ public class AddShoppingContraller {
 
     @RequestMapping(value = "addshops")
     @ResponseBody
-    @ApiOperation(value="订单展示",httpMethod="POST",notes="返回Map订单信息")
+    @ApiImplicitParam(paramType = "query",name = "od",required = true,value = "订单详情",dataType = "Order")
+    @ApiOperation(value="订单添加展示",httpMethod="POST",notes="返回Map订单信息",response = Map.class)
     public Map<String, String> addShop(@RequestBody Order od){
         return ass.addShop(od);
     }
