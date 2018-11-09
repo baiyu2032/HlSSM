@@ -28,18 +28,16 @@ public class AddShoppingContraller {
 
     @RequestMapping(value = "addshopping")
     @ResponseBody
-    @ApiImplicitParam(paramType = "query",name ="odg",required = true,value = "订单商品详情",dataType = "Ordergoods")
     @ApiOperation(value="订单商品",httpMethod="POST",notes="返回JSON订单商品信息",response = String.class)
-    public String addShopping(@ApiParam(required = true, name ="参数", value ="将参数对象打包为json传入")@RequestBody Ordergoods odg){
+    public String addShopping(@ApiParam(required = true, name ="odg", value ="订单商品详情")@RequestBody Ordergoods odg){
         return ass.addSho(odg);
     }
 
 
     @RequestMapping(value = "addshops")
     @ResponseBody
-    @ApiImplicitParam(paramType = "query",name = "od",required = true,value = "订单详情",dataType = "Order")
     @ApiOperation(value="订单添加展示",httpMethod="POST",notes="返回Map订单信息",response = Map.class)
-    public Map<String, String> addShop(@RequestBody Order od){
+    public Map<String, String> addShop(@ApiParam(name = "od",required = true,value = "订单详情")@RequestBody Order od){
         return ass.addShop(od);
     }
 }
