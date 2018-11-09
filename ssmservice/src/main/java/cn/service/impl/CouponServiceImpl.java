@@ -2,12 +2,15 @@ package cn.service.impl;
 
 import cn.dao.CouponDao;
 import cn.pojo.Coupon;
+import cn.pojo.Ucoupon;
 import cn.service.CouponService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository("csi")
 public class CouponServiceImpl implements CouponService {
@@ -34,69 +37,64 @@ public class CouponServiceImpl implements CouponService {
     /**
      * 用户添加优惠券
      *
-     * @param cid 优惠券编号
-     * @param uid 用户编号
+     * @param cid
      * @return
      */
     @Override
-    public String addUserUcoupon(int cid, int uid) {
+    public String addUserUcoupon(int cid,int uname) {
+        Map<String,Object> map = new HashMap<String, Object>();
+        int count = 0;
         String str = "";
-        int count = couponDao.addUserUcoupon(cid,uid);
-        if (count == 0){
-            str = "添加失败";
-        }else if (count == 1){
-            str = "添加成功";
+        int con = couponDao.selCon(cid, uname);
+        if (con!=0) {
+            map.put("code", "2");
+            map.put("mrremg", "已有不可重复添加！");
+            return JSON.toJSONString(map);
         }
-        str = JSON.toJSONString(str);
-        return str;
+        count = couponDao.addUserUcoupon(cid,uname);
+        if (count == 0){
+            map.put("code","1");
+            map.put("mrremg","添加失败");
+        }else if (count == 1) {
+            map.put("code","0");
+            map.put("mrremg","添加成功");
+        }
+        return JSON.toJSONString(map);
     }
 
     /**
      * 用户使用优惠券
      *
-     * @param cid 优惠券编号
-     * @param uid 用户编号
      * @return
      */
     @Override
-    public String updUcoupon(int cid, int uid) {
-        int count = couponDao.updUcoupon(cid,uid);
-        String str = "已使用";
-        str = JSON.toJSONString(str);
+    public String updUcoupon(int cid, int uname) {
+        int count = 0;
+        count = couponDao.updUcoupon(cid,uname);
+        String str = "使用成功";
         return str;
     }
 
     /**
      * 显示用户所有优惠券信息
      *
-     * @param uid 用户编号
      * @return
      */
     @Override
-    public String selUserCoupon(int uid) {
-        String str = "";
-        int count = couponDao.selUserCoupon(uid);
-        if (count == 1) {
-            str = "满100减10";
-        }else if (count == 2) {
-            str = "满200减25";
-        }else if (count == 3) {
-            str = "满300减35";
-        }
-        str = JSON.toJSONString(str);
-        return str;
+    public String selUserCoupon(int uname) {
+        List<Ucoupon> ucoupons = couponDao.selUserCoupon(uname);
+        return JSON.toJSONString(ucoupons);
     }
 
     /**
      * 显示优惠券状态 (0.未领取 1.被占用 2.已使用)
      *
-     * @param uid 用户编号
      * @return
      */
     @Override
-    public String selCoupon(int uid) {
+    public String selCoupon(int uname) {
         String str = "";
-        int count = couponDao.selCoupon(uid);
+        int count = couponDao.selCoupon(uname);
         if (count == 0) {
             str = "未领取！";
         }else if (count == 1) {

@@ -12,7 +12,7 @@ public class Ucoupon {
   /**
    * 用户编号
    */
-  private Integer ucname;
+  private Integer uname;
   /**
    * 生效时间
    */
@@ -44,11 +44,11 @@ public class Ucoupon {
 
 
   public Integer getUcname() {
-    return ucname;
+    return uname;
   }
 
   public void setUcname(Integer ucname) {
-    this.ucname = ucname;
+    this.uname = ucname;
   }
 
 
@@ -113,5 +113,4 @@ public class Ucoupon {
   public void setThree(String three) {
     this.three = three;
   }
-
 }

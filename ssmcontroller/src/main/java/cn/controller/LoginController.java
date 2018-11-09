@@ -11,15 +11,17 @@
 package cn.controller;
 
 import cn.service.impl.LoginUserServiceImpl;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("log/")
 @Controller
+@Api(value = "登录模块",description = "登录和注册功能接口")
 public class LoginController {
 
     @Autowired
@@ -35,16 +37,18 @@ public class LoginController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "code")
-    public String login(@RequestParam("code") String code) {
+    @RequestMapping(value = "code.html/{code}",method = RequestMethod.GET)
+    @ApiOperation(value="用户登录",httpMethod="GET",notes="返回登录情况")
+    public String login(@ApiParam(name="code",value = "用户code码",required = true) @PathVariable("code") String code) {
         String loginfo = loginUserService.logUser(code);
         return loginfo;
     }
 
 
     @ResponseBody
-    @RequestMapping(value = "addUser")
-    public String addToLogin(@RequestParam("uname") String uname,@RequestParam("code") String code) {
+    @RequestMapping(value = "addUser.html/{uname}/{code}",method = RequestMethod.GET)
+    @ApiOperation(value="用户注册",httpMethod="GET",notes="返回注册情况")
+    public String addToLogin(@ApiParam(name="uname",value = "用户名",required = true)@PathVariable("uname") String uname,@ApiParam(name="code",value = "用户code码",required = true)@PathVariable("code") String code) {
         return loginUserService.addUser(uname, code);
     }
 

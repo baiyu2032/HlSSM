@@ -1,4 +1,4 @@
-package cn.service.impl;
+package cn.service;
 
 import cn.pojo.Goods;
 

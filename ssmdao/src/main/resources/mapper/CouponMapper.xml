@@ -7,21 +7,25 @@
         select cname from coupon where num=0
     </select>
 
-    <insert id="addUserUcoupon" parameterType="cn.pojo.Ucoupon">
-        insert into ucoupon values (0,#{cid},#{uid},0,0,1,1,0,0,0)
+    <insert id="addUserUcoupon">
+        insert into ucoupon values (0,#{cid},#{uname},0,0,1,1,0,0,0)
     </insert>
 
     <update id="updUcoupon" parameterType="cn.pojo.Ucoupon">
-        update ucoupon set uclogo=2 where cid=#{cid} and uid=#{uid}
+        update ucoupon set uclogo=2 where cid=#{cid} and uname=#{uname}
     </update>
-
-    <select id="selUserCoup on" parameterType="cn.pojo.Ucoupon" resultType="int">
-        select cid from ucoupon where uid=#{uid}
-    </select>
 
     <!-- 显示优惠券状态 -->
     <select id="selCoupon" parameterType="cn.pojo.Ucoupon" resultType="int">
-        select uclogo from ucoupon where uid=#{uid}
+        select uclogo from ucoupon where uname=#{uname}
+    </select>
+
+    <select id="selCon" resultType="int">
+        select count(1) from ucoupon where cid=#{cid} and uname=#{uname}
+    </select>
+
+    <select id="selUserCoupon" resultType="cn.pojo.Ucoupon" parameterType="int">
+        select cid,uname,uid from ucoupon where uname=#{uname}
     </select>
 
 </mapper>

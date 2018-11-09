@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("scc/")
 @Controller
-@Api(value="页面展示",description="具体描述")
+@Api(value="购物车功能模块接口",description="具体描述")
 public class ShopCartContraller {
     @Autowired
     @Qualifier("scsi")

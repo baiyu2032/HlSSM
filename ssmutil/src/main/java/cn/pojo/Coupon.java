@@ -127,4 +127,5 @@ public class Coupon {
   public void setThree(String three) {
     this.three = three;
   }
+
 }

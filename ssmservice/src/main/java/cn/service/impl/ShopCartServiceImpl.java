@@ -1,6 +1,7 @@
 package cn.service.impl;
 
 import cn.pojo.Goods;
+import cn.service.ShopCartService;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;

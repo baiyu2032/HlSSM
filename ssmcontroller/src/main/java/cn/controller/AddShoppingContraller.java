@@ -18,7 +18,7 @@ import java.util.Map;
 
 @RequestMapping("addshop/")
 @Controller
-@Api(value="页面展示",description="具体描述")
+@Api(value="订单模块接口",description="具体描述")
 public class AddShoppingContraller {
     @Autowired
     @Qualifier("addshop")
